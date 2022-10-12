@@ -1,18 +1,18 @@
 <script lang="ts">
-	import names from "$lib/data/names.json";
-	import occupations from "$lib/data/occupations.json";
-	import TextField from "$lib/components/TextField.svelte";
-	import type { Character } from "src/types";
-	import Dice from "$lib/components/icons/Dice.svelte";
-	import Info from "$lib/components/icons/Info.svelte";
+	import names from '$lib/data/names.json';
+	import occupations from '$lib/data/occupations.json';
+	import TextField from '$lib/components/TextField.svelte';
+	import type { Character } from 'src/types';
+	import Dice from '$lib/components/icons/Dice.svelte';
+	import Info from '$lib/components/icons/Info.svelte';
 
 	let character: Character = {
 		// General info
-		name: "",
-		pronoun: "",
-		residence: "",
-		birthplace: "",
-		occupation: "",
+		name: '',
+		pronoun: '',
+		residence: '',
+		birthplace: '',
+		occupation: '',
 		age: 25,
 		// Stats
 		characteristics: {
@@ -23,7 +23,7 @@
 			siz: 0,
 			pow: 0,
 			app: 0,
-			edu: 0,
+			edu: 0
 		},
 		skills: {},
 
@@ -34,46 +34,43 @@
 		sanity: { starting: 0, current: 0 },
 
 		// Other
-		story: "",
+		story: '',
 		backstory: {},
 		gearAndPossessions: [],
 		wealth: {
 			cash: 0,
 			spendingLevel: 20,
-			assets: [],
+			assets: []
 		},
-		notes: "",
+		notes: ''
 	};
 	let count = 0;
 	const randomizeName = () => {
 		const len = names.surname.length;
 		const firstnameIdx = Math.floor(Math.random() * len);
 		const surnameIdx = Math.floor(Math.random() * len);
-		const firstname =
-			count % 2 === 0
-				? names.male[firstnameIdx]
-				: names.female[firstnameIdx];
+		const firstname = count % 2 === 0 ? names.male[firstnameIdx] : names.female[firstnameIdx];
 		const lastname = names.surname[surnameIdx];
 		count++;
-		return firstname + " " + lastname;
+		return firstname + ' ' + lastname;
 	};
 
 	const search = (query: string, values: string[]) => {
-		return values.filter((x) =>
-			x.toLowerCase().includes(query.toLowerCase())
-		);
+		return values.filter((x) => x.toLowerCase().includes(query.toLowerCase()));
 	};
 
-	let suggestions: {id: string, label: string, value: any}[] = []
-	$: suggestions = search(character.occupation, occupations).map((o) => ({id: o, label: o, value: o}))
+	$: suggestions = search(character.occupation, occupations).map((o) => ({
+		id: o,
+		label: o,
+		value: o
+	}));
+	
 </script>
 
 <div class="flex flex-col items-center w-screen">
 	<h1 class="text-4xl text-center mx-auto my-4">Character Creator</h1>
 	<h1 class="text-2xl py-2">General info</h1>
-	<div
-		class="grid mx-auto px-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2"
-	>
+	<div class="grid mx-auto px-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2">
 		<TextField
 			small
 			label="Name"
@@ -98,10 +95,10 @@
 			label="Occupation"
 			bind:value={character.occupation}
 			bind:options={suggestions}
-			onOptionClick={(o) => character.occupation = o.value}
+			onOptionClick={(o) => (character.occupation = o.value)}
 			placeholder="Occupation"
 		>
-			<button slot="right" class="btn btn-outline btn-sm">
+		<button slot="right" class="btn btn-outline btn-sm" on:click={(e) => {e.preventDefault(); e.stopPropagation()}}>
 				<Info />
 			</button>
 		</TextField>

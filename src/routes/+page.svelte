@@ -1,22 +1,19 @@
 <script lang="ts">
 </script>
 
-<div class="hero min-h-max h-screen w-screen">
+<div class="hero h-screen min-h-max w-screen">
 	<div class="hero-content text-center">
 		<div class="max-w-md">
-			<h1 class="text-5xl md:text-7xl pb-4 text-primary">
-				Cthutils
-			</h1>
+			<h1 class="pb-4 text-5xl text-primary md:text-7xl">Cthutils</h1>
 
 			<img
 				src="/images/Deep-One.svg"
 				alt="A tribal depiction of a Deep One"
-				class="h-36 md:h-56 my-6 mx-auto translate-x-5"
+				class="my-6 mx-auto h-36 translate-x-5 md:h-56"
 			/>
 
 			<div class="text-2xl md:text-3xl">
-				A set of Keeper's and Investigator's utilities for <br /> Call of
-				Cthulhu 7th edition
+				A set of Keeper's and Investigator's utilities for <br /> Call of Cthulhu 7th edition
 			</div>
 		</div>
 	</div>
