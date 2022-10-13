@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import skills from "$lib/data/skills"
 export type NavItem = {
 	label: string;
 	path: string;
 	subItems?: NavItem[];
 }
+
+
+export type SelectOption = { value: any; id: string; label: string }
 
 export type Characteristics = {
 	str: number,
