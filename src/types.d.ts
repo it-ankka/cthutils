@@ -53,6 +53,7 @@ export type Character = {
 	residence: string;
 	pronoun: string;
 	age: number;
+	image: string | null;
 
 	// Stats
 	characteristics: Characteristics;

@@ -8,6 +8,8 @@ export const newCharacter = (): Character => ({
 		birthplace: '',
 		occupation: '',
 		age: 25,
+		image: null,
+
 		// Stats
 		characteristics: {
 			str: 0,
